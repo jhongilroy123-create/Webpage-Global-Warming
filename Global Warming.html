@@ -1,0 +1,323 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Warming Awareness</title>
+    <style>
+      * {margin:0; padding:0; box-sizing:border-box;}
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      @keyframes gradientBG {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+      }
+
+      /* Navbar */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 60px;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #fff;
+      }
+
+      nav ul {
+        list-style: none;   /* ✅ fixed */
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        display: inline-block;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #f0f0f0;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        white-space: nowrap;  /* ✅ keeps links in one line */
+      }
+
+      nav ul li a:hover {
+        background: #56ccf2;
+        color: #002b4d;
+      }
+
+      /* Hero */
+      .hero {
+        display: flex;
+        align-items: stretch;
+        min-height: 90vh;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-left {
+        flex: 1;
+        padding: 80px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        animation: fadeInLeft 1.5s ease;
+        z-index: 2;
+      }
+      .hero-left h1 {
+        font-size: 3.2rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        background: linear-gradient(90deg, #56ccf2, #2af598);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-left p {
+        font-size: 1.15rem;
+        margin-bottom: 30px;
+        line-height: 1.7;
+        color: #d9e6f2;
+      }
+      .btn {
+        display: inline-block;
+        padding: 14px 35px;
+        background: #56ccf2;
+        color: #00334d;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+        box-shadow: 0 5px 20px rgba(86,204,242,0.5);
+      }
+      .btn:hover {
+        background: #2af598;
+        color: #001a26;
+        transform: scale(1.05);
+      }
+
+      .hero-right {
+        flex: 1;
+        background: url("your-global-warming-image.png") no-repeat center center/cover;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .hero-right::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.45);
+      }
+
+      /* Info Box on Right Side */
+      .info-box {
+        position: relative;
+        background: rgba(255,255,255,0.12);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        z-index: 2;
+        max-width: 350px;
+        text-align: left;
+        animation: float 6s ease-in-out infinite;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .info-box:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 40px rgba(86,204,242,0.6);
+      }
+      .info-box h2 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        color: #56ccf2;
+      }
+      .fact {
+        display: none;
+        animation: fadeIn 1s ease;
+      }
+      .fact.active {
+        display: block;
+      }
+      .btn.small {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      .btn.small:hover {
+        background: #2af598;
+        box-shadow: 0 0 15px #2af598;
+      }
+
+      /* Cards Section */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 80px 60px;
+        background: #0d1b2a;
+      }
+      .card {
+        background: rgba(255,255,255,0.05);
+        border-radius: 15px;
+        padding: 30px;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        background: rgba(86,204,242,0.1);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      }
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #56ccf2;
+      }
+      .card p {
+        font-size: 1rem;
+        color: #d9e6f2;
+        line-height: 1.6;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(to right, #0d1b2a, #1b263b);
+        padding: 20px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255,255,255,0.15);
+      }
+      footer p {
+        font-size: 0.9rem;
+        color: #b0c4de;
+      }
+      .socials a {
+        color: #b0c4de;
+        margin-left: 15px;
+        font-size: 1.2rem;
+        transition: 0.3s;
+        text-decoration: none;
+      }
+      .socials a:hover {
+        color: #56ccf2;
+      }
+
+      /* Animations */
+      @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-50px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+      }
+    </style>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">🌍 Global Watch</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="hyperlink%20cause.html">Causes</a></li>
+          <li><a href="hyperlink%20effect.html">Effects</a></li>
+          <li><a href="hyperlink%20solution.html">Solutions</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h1>Act Now Against Global Warming</h1>
+        <p>
+          Climate change is one of the most pressing challenges of our time.  
+          Melting glaciers, rising sea levels, and extreme weather events  
+          threaten our planet and future generations.  
+          Together, we can make a difference.
+        </p>
+        <a href="#solutions" class="btn">🌱 Take Action</a>
+      </div>
+      <div class="hero-right">
+        <div class="info-box">
+          <h2>🌡️ Global Warming Facts</h2>
+          <div class="fact active">+1.1°C rise since 1880</div>
+          <div class="fact">100M people at risk by 2030</div>
+          <div class="fact">💧 Sea levels rising 3.3 mm/year</div>
+          <div class="fact">🔥 Hottest decade ever recorded</div>
+          <a href="Hyper%20link%20cause.html" class="btn small">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="cards">
+      <div class="card" id="causes">
+        <h3>🌡️ Causes</h3>
+        <p>Burning fossil fuels, deforestation, and industrial activities release greenhouse gases, trapping heat in our atmosphere.</p>
+      </div>
+      <div class="card" id="effects">
+        <h3>🌍 Effects</h3>
+        <p>Rising temperatures cause stronger storms, floods, and droughts, affecting millions of lives and ecosystems worldwide.</p>
+      </div>
+      <div class="card" id="solutions">
+        <h3>🌱 Solutions</h3>
+        <p>Adopting renewable energy, protecting forests, and reducing waste are key to slowing global warming.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>2025 Global Watch | Raising Awareness for Climate Action</p>
+      <div class="socials">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </footer>
+
+    <!-- Fact Cycling Script -->
+    <script>
+      let facts = document.querySelectorAll(".fact");
+      let index = 0;
+
+      setInterval(() => {
+        facts[index].classList.remove("active");
+        index = (index + 1) % facts.length;
+        facts[index].classList.add("active");
+      }, 3000); // change fact every 3s
+    </script>
+  </body>
+  </html>
